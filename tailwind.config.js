@@ -1,63 +1,66 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  darkMode: "class",
+const defaultTheme = require('tailwindcss/defaultTheme')
+
+module.exports = {
+  darkMode: ['class'],
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./src/styles/**/*.{css,scss,sass,less,styl}",
-    "./src/components/**/*.{js,ts,jsx,tsx}",
-    "./src/pages/**/*.{js,ts,jsx,tsx}",
-    "./src/layouts/**/*.{js,ts,jsx,tsx}",
-    "./src/utils/**/*.{js,ts,jsx,tsx}",
-    "./src/hooks/**/*.{js,ts,jsx,tsx}",
-    "./src/contexts/**/*.{js,ts,jsx,tsx}",
-    "./src/types/**/*.{js,ts,jsx,tsx}",
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
   ],
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: '2rem',
       screens: {
-        "2xl": "1400px",
+        '2xl': '1400px',
+      
       },
     },
     extend: {
       colors: {
-        primary: "#000000",
-        secondary: "#000000",
-        tertiary: "#000000",
+        'primary-500': '#877EFF',
+        'primary-600': '#5D5FEF',
+        'secondary-500': '#FFB620',
+        'off-white': '#D0DFFF',
+        'red': '#FF5A5A',
+        'dark-1': '#000000',
+        'dark-2': '#09090A',
+        'dark-3': '#101012',
+        'dark-4': '#1F1F22',
+        'light-1': '#FFFFFF',
+        'light-2': '#EFEFEF',
+        'light-3': '#7878A3',
+        'light-4': '#5C5C7B',
+      },
+      screens: {
+        'xs': '480px',
+      
+      },
+      width: {
+        '420': '420px',
+        '465': '465px',
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
+        inter: ['Inter', 'sans-serif'],
+
       },
-      fontSize: {
-        sm: "0.875rem",
-        base: "1rem",
-        lg: "1.125rem",
-        xl: "1.25rem",
-        "2xl": "1.5rem",
-        "3xl": "1.875rem",
-        "4xl": "2.25rem",
-        "5xl": "3rem",
-        "6xl": "4rem",
+      keyframes: {
+        'accordion-down': {
+          from: { height: 0 },
+          to: { height: 'var(--radix-accordion-content-height)' },
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: 0 },
+        },
       },
-      fontWeight: {
-        normal: "400",
-        medium: "500",
-        bold: "700",
-      },
-      lineHeight: {
-        sm: "1.25rem",
-        base: "1.5rem",
-        lg: "1.75rem",
-        xl: "2rem",
-        "2xl": "2.25rem",
-        "3xl": "2.625rem",
-        "4xl": "3rem",
-        "5xl": "3.5rem",
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
       },
     },
   },
-  plugins: [],
-}
-
+  plugins: [require('tailwindcss-animate')],
+};
